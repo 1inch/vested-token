@@ -110,6 +110,11 @@ contract VestedToken is Ownable {
                 unchecked {
                     emit Transfer(receiver, address(0), storedBalance - actualBalance);
                 }
+            } else {
+                _vestingBalances[vesting] = actualBalance;
+                unchecked {
+                    emit Transfer(address(0), receiver, actualBalance - storedBalance);
+                }
             }
         }
     }
