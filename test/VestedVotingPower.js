@@ -19,7 +19,7 @@ describe('VestedVotingPower', async function () {
         this.VestedVotingPower = await VestedVotingPower.new(V1INCH_ADDR, ST1INCH_ADDR);
     });
 
-    it('should be ok', async function () {
+    it('should register vestings and calculate voting power correctly', async function () {
         await this.VestedVotingPower.registerVestings(vestings);
         expect(await this.VestedToken.balanceOf('0x46aBbc9fc9d8E749746B00865BC2Cf7C4d85C837')).to.be.bignumber.equal(ether('1875000'));
         expect(await this.VestedVotingPower.votingPowerOf('0x46aBbc9fc9d8E749746B00865BC2Cf7C4d85C837')).to.be.bignumber.lt(ether('130000'));

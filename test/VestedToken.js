@@ -19,7 +19,7 @@ describe('VestedToken', async function () {
         this.VestedToken = await VestedToken.new(INCH_ADDR);
     });
 
-    it('should be ok', async function () {
+    it('should register and deregister vestings, update balances correctly, and handle vesting claims as expected', async function () {
         await this.VestedToken.registerVestings(vestings);
         expect(await this.VestedToken.balanceOf('0x4942b20750163675DDf004476FFE46626652dfD0')).to.be.bignumber.equal(ether('18750000'));
         expect(await this.VestedToken.balanceOf('0x4Dc06c025Cb97d6Dc4A17183187e28D297B83C7B')).to.be.bignumber.equal(ether('13926250'));
